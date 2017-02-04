@@ -1,0 +1,33 @@
+server {
+    listen   80 default;
+    index index.html index.htm;
+    server_name selfgrowth.cn;
+    root  /var/www/laravel-5-blog/public;
+
+    index index.php index.html index.htm;
+    location / {
+	try_files $uri $uri/ /index.php?$query_string;
+    }
+
+       location ~ .*\.(gif|jpg|jpeg|png|bmp|swf)$
+        {
+            expires      30d;
+        }
+
+        location ~ .*\.(js|css)?$
+        {
+            expires      12h;
+        }
+
+        location ~ /\.
+        {
+            deny all;
+        }
+
+        access_log  /home/wwwlogs/access.log;
+
+
+
+
+
+}
